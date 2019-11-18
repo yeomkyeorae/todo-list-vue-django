@@ -21,6 +21,15 @@
 
 
 
+```
+- npm i vue-router
+- vue add router
+```
+
+
+
+
+
 # Vue - DRF
 
 ## 1. 기본 설정
@@ -82,5 +91,26 @@
    		package.json
    ```
 
-   
+
+
+## 2. DRF 모델링
+
+## 3. Vue
+
+### Vue-router(경로 부여, 각각의 경로마다 작업을 수행할 수 있도록)
+
+``` bash
+$ npm i vue-router
+$ vue add router
+> y
+> y
+```
+
+
+
+
+
+1. 브라우저에서 다른 도메인 요청 x
+2. policy (CORS) ! 서버가 설정
+3. 장고 서버로 가서 설정해주자!
 
