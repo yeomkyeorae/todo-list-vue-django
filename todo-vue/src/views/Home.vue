@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <TodoForm @todoCreate-event="todoCreate" /> <!-- PascalCase, upperCamelcase -->
+    <!-- kebab-case -->
     <TodoList :todos="todos"/>
   </div>
 </template>
@@ -9,16 +10,24 @@
 // @ is an alias to /src
 import axios from 'axios'
 import TodoList from '@/components/TodoList.vue'
+import TodoForm from '@/components/TodoForm.vue'
 
 export default {
   name: 'home',
   components: {
-    TodoList
+    TodoList,
+    TodoForm
   },
   data() {
     // 컴포턴트에서는 반드시 data를 함수로 작성하고, object를 리턴한다.
     return {
       todos: [],
+    }
+  },
+  methods: {
+    todoCreate(title){
+      console.log('부모컴포넌트')
+      console.log(title)
     }
   },
   mounted() {
