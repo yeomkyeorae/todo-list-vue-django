@@ -111,6 +111,24 @@ $ vue add router
 
 
 1. 브라우저에서 다른 도메인 요청 x
+
+   ```
+   :8080		axios		:8000
+   VUE			-> X		Django
+   			브라우저
+   			① CORS 정책(헤더) 설정
+   ```
+
+   
+
 2. policy (CORS) ! 서버가 설정
+
 3. 장고 서버로 가서 설정해주자!
 
+   ```bash
+   $ pip install django-cors-headers
+   ```
+
+   
+
+   
