@@ -41,13 +41,21 @@ export default {
         })
     },
     getTodos(){
-      axios.get('http://127.0.0.1:8000/api/v1/todos/')
+      // axios 요청시마다 헤더를 추가해서 보내야 함!
+      this.$session.start()
+      const token = this.$session.get('jwt')
+      const options = {
+        headers: {
+          Authorization: `JWT ${token}` // JWT 공백
+        }
+      }
+      axios.get('http://127.0.0.1:8000/api/v1/todos/', options)
         .then(response => {
-        // console.log(response) // 만약, 오류가 발생하게 되면 ESlint 설정을 package.json에 추가
-        this.todos = response.data
-      })
-      .catch(error => {
-        console.log(error)
+          // console.log(response) // 만약, 오류가 발생하게 되면 ESlint 설정을 package.json에 추가
+          this.todos = response.data
+        })
+        .catch(error => {
+          console.log(error)
       })
     }
   },

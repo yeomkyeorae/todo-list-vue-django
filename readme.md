@@ -182,6 +182,10 @@ $ vue add router
  	4. 서버에서는 매번 Token이 유효한지 확인
  	5. 클라이언트는 전송된 값을 디코딩
 
+JWT는 기본적으로 헤더, payload(주고받는 데이터), Verify signature로 구성된다.
+
+[https://jwt.io](https://jwt.io)에서 직접 디코딩을 해볼 수 있다.  
+
 
 
 ### 1) Django
@@ -189,4 +193,34 @@ $ vue add router
 ```bash
 $ pip install djangorestframework-jwt
 ```
+
+### 2) Vue
+
+1. 로그인 관련 컴포넌트 생성
+
+2. 이벤트를 통해 axios 요청
+
+3. token 값 저장
+
+   1. `vue-session`
+
+      ```bash
+      $ npm i vue-session
+      ```
+
+   2. `src/main.js`
+
+      ```javascript
+      import VueSession from 'vue-session'
+      
+      Vue.use(VueSession)
+      ```
+
+   3. `vue-session` 활용하여 저장
+
+      ```javascript
+      const token = response.data.token
+      this.$session.start()
+      this.$session.set('jwt', token)
+      ```
 
