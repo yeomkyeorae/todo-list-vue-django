@@ -9,6 +9,7 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios'
+import jwtDecode from 'jwt-decode'
 import TodoList from '@/components/TodoList.vue'
 import TodoForm from '@/components/TodoForm.vue'
 
@@ -26,16 +27,25 @@ export default {
   },
   methods: {
     todoCreate(title){
+      this.$session.start()
+      const token = this.$session.get('jwt')
+      const options = {
+        headers: {
+          Authorization: `JWT ${token}` // JWT 공백
+        }
+      }
+      console.log(jwtDecode(token))
+      // {user_id: 1, username: 'yeom', exp: 1534356234, email: 'y@y.com'}
       const data = {
         title: title,
-        user: 1
+        user: jwtDecode(token).user_id
       }
       // request.POST인 경우는 아래 FormData를 사용한다!
       // const formData = new FormData()
       // formData.append('title', title)
       // formData.append('is_completed', false)
       // formData.append('user', 1)
-      axios.post('http://127.0.0.1:8000/api/v1/todos/', data)
+      axios.post('http://127.0.0.1:8000/api/v1/todos/', data, options)
         .then(response =>{
           this.todos.push(response.data)
         })
