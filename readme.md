@@ -288,3 +288,10 @@ console.log(jwtDecode(token))
 3. `action`: 비동기 처리를 하는 `methods`, `mutation`도 호출 가능하다. (`state` 변화를 `mutation` `commit`을 통해 가능하다.)
    - `action` 함수는 첫번째 인자로 항상 `context`를 받는다.
      - `state`, `commit`, `dispatch`, ...
+   - `action` 함수는 항상 `dispatch`를 통해 호출된다.
+
+4. `getters`: Vue component 상에서의 `computed`
+   - 일반적인 `state` 값을 활용하는 변수의 경우 `getters`에 정의한다.
+
+
+
